@@ -20,6 +20,6 @@ jobs:
   job_name_Hello_2:
     runs-on: ubuntu-latest
     steps:
-      -name: Step_Hello_world_2
+      - name: Step_Hello_world_2
         run: echo "Hello_world_2"
         shell: bash
