@@ -1,0 +1,25 @@
+name: HelloWorld_First_CICD
+
+on:
+  push:
+    branches:
+        - main
+    pull_request:
+      branches:
+        - main
+  workflow_dispatch:
+
+jobs:
+  name: Job_name_Hello
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Helllo_world
+        run: echo "Hello World"
+        shell: bash
+  name: job_name_Hello_2
+    runs-on:ubuntu-latest
+    steps:
+      -name: Step_Hello_world_2
+        run: echo "Hello_world_2"
+        shell: bash
