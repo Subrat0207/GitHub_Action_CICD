@@ -12,19 +12,21 @@ on:
   push:
     branches:
         - main
-    pull_request:
+  pull_request:
       branches:
         - main
 
-if: ${{inputs.env == 'QUAL'}}
+
 jobs:
-  Job_name_Hello:
+  choose_Env:
     runs-on: ubuntu-latest
+    if: ${{ inputs.env == 'QUAL' }}
     steps:
       - uses: actions/checkout@v3
       - name: Helllo_world
         run: echo "Hello World"
         shell: bash
+        
   job_name_Hello_2:
     runs-on: ubuntu-latest
     steps:
