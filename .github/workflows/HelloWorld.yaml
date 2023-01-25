@@ -1,6 +1,12 @@
 name: HelloWorld_First_CICD
 
 on:
+  push:
+    branches:
+        - main
+  pull_request:
+      branches:
+        - main
   workflow_dispatch:
     inputs:
       env:
@@ -9,27 +15,21 @@ on:
         options:
           - QUAL
           - INT
-  push:
-    branches:
-        - main
-  pull_request:
-      branches:
-        - main
 
+if: ${{ inputs.env == 'QUAL' }}
 
 jobs:
-  choose_Env:
+  hello_1: 
     runs-on: ubuntu-latest
-    if: ${{ inputs.env == 'QUAL' }}
     steps:
       - uses: actions/checkout@v3
       - name: Helllo_world
         run: echo "Hello World"
         shell: bash
-        
-  job_name_Hello_2:
-    runs-on: ubuntu-latest
-    steps:
+  hello_2:
+      runs-on: ubuntu-latest
+      steps:
       - name: Step_Hello_world_2
         run: echo "Hello_world_2"
         shell: bash
+  
