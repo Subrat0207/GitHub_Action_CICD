@@ -1,14 +1,22 @@
 name: HelloWorld_First_CICD
 
 on:
+  workflow_dispatch:
+    inputs:
+      env:
+        description: 'Choose the ENV'
+        required: true
+        options:
+          - QUAL
+          - INT
   push:
     branches:
         - main
     pull_request:
       branches:
         - main
-  workflow_dispatch:
 
+if: ${{inputs.env == 'QUAL'}}
 jobs:
   Job_name_Hello:
     runs-on: ubuntu-latest
